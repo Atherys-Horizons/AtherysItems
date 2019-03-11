@@ -3,6 +3,7 @@ package com.atherys.items.custom;
 import com.atherys.rpg.api.stat.AttributeType;
 import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.item.enchantment.Enchantment;
+import org.spongepowered.api.item.enchantment.EnchantmentType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,13 +18,13 @@ public class CustomItemBuilder {
 
     private int quantity;
 
-    private int startingDurability;
+    private int durability;
 
     private String name;
 
     private List<String> lore = new ArrayList<>();
 
-    private List<Enchantment> enchantments = new ArrayList<>();
+    private Map<EnchantmentType, Integer> enchantments = new HashMap<>();
 
     private Map<AttributeType, Double> attributes = new HashMap<>();
 
@@ -42,8 +43,8 @@ public class CustomItemBuilder {
         return this;
     }
 
-    public CustomItemBuilder startingDurability(int startingDurability) {
-        this.startingDurability = startingDurability;
+    public CustomItemBuilder durability(int startingDurability) {
+        this.durability = startingDurability;
         return this;
     }
 
@@ -58,12 +59,17 @@ public class CustomItemBuilder {
     }
 
     public CustomItemBuilder enchantments(List<Enchantment> enchantments) {
-        this.enchantments = enchantments;
+        enchantments.forEach(this::enchantment);
         return this;
     }
 
     public CustomItemBuilder enchantment(Enchantment enchantment) {
-        this.enchantments.add(enchantment);
+        this.enchantments.put(enchantment.getType(), enchantment.getLevel());
+        return this;
+    }
+
+    public CustomItemBuilder enchantment(EnchantmentType enchantmentType, int level) {
+        this.enchantments.put(enchantmentType, level);
         return this;
     }
 
@@ -78,6 +84,6 @@ public class CustomItemBuilder {
     }
 
     public CustomItem build() {
-        return new CustomItem(id, itemType, quantity, startingDurability, name, lore, enchantments, attributes);
+        return new CustomItem(id, itemType, quantity, durability, name, lore, enchantments, attributes);
     }
 }

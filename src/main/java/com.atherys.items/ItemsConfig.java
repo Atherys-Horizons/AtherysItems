@@ -26,9 +26,9 @@ public class ItemsConfig extends PluginConfig {
                         "A toughened leather tunic.",
                         "It's really hard to bite into..."
                 ))
-                .startingDurability(400)
-                .enchantment(Enchantment.of(EnchantmentTypes.UNBREAKING, 3))
-                .enchantment(Enchantment.of(EnchantmentTypes.THORNS, 1))
+                .durability(400)
+                .enchantment(EnchantmentTypes.UNBREAKING, 3)
+                .enchantment(EnchantmentTypes.THORNS, 1)
                 .attribute(AttributeTypes.DEFENSE, 5.0)
                 .attribute(AttributeTypes.STRENGTH, 3.0)
                 .build()
@@ -36,6 +36,6 @@ public class ItemsConfig extends PluginConfig {
     }
 
     protected ItemsConfig() throws IOException {
-        super("custom/atherysitems", "custom.conf");
+        super("config/atherysitems", "custom.conf");
     }
 }

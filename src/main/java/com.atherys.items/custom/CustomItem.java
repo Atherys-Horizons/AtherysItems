@@ -4,7 +4,7 @@ import com.atherys.rpg.api.stat.AttributeType;
 import ninja.leaping.configurate.objectmapping.Setting;
 import ninja.leaping.configurate.objectmapping.serialize.ConfigSerializable;
 import org.spongepowered.api.item.ItemType;
-import org.spongepowered.api.item.enchantment.Enchantment;
+import org.spongepowered.api.item.enchantment.EnchantmentType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +24,7 @@ public class CustomItem {
     private int quantity;
 
     @Setting("durability")
-    private int startingDurability;
+    private int durability;
 
     @Setting("name")
     private String name;
@@ -33,7 +33,7 @@ public class CustomItem {
     private List<String> lore = new ArrayList<>();
 
     @Setting("enchantments")
-    private List<Enchantment> enchantments = new ArrayList<>();
+    private Map<EnchantmentType, Integer> enchantments = new HashMap<>();
 
     @Setting("attributes")
     private Map<AttributeType, Double> attributes = new HashMap<>();
@@ -45,16 +45,16 @@ public class CustomItem {
             String id,
             ItemType itemType,
             int quantity,
-            int startingDurability,
+            int durability,
             String name,
             List<String> lore,
-            List<Enchantment> enchantments,
+            Map<EnchantmentType, Integer> enchantments,
             Map<AttributeType, Double> attributes
     ) {
         this.id = id;
         this.itemType = itemType;
         this.quantity = quantity;
-        this.startingDurability = startingDurability;
+        this.durability = durability;
         this.name = name;
         this.lore = lore;
         this.enchantments = enchantments;
@@ -77,8 +77,8 @@ public class CustomItem {
         return quantity;
     }
 
-    public int getStartingDurability() {
-        return startingDurability;
+    public int getDurability() {
+        return durability;
     }
 
     public String getName() {
@@ -89,7 +89,7 @@ public class CustomItem {
         return lore;
     }
 
-    public List<Enchantment> getEnchantments() {
+    public Map<EnchantmentType, Integer> getEnchantments() {
         return enchantments;
     }
 

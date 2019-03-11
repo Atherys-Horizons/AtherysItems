@@ -2,12 +2,11 @@ package com.atherys.items.custom;
 
 import com.atherys.items.util.ItemStackUtils;
 import com.google.inject.Singleton;
+import org.spongepowered.api.item.enchantment.Enchantment;
+import org.spongepowered.api.item.enchantment.EnchantmentType;
 import org.spongepowered.api.item.inventory.ItemStack;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Singleton
 public class CustomItemService {
@@ -31,11 +30,17 @@ public class CustomItemService {
 
         ItemStackUtils.setItemStackName(stack, customItem.getName());
         ItemStackUtils.setItemStackLore(stack, customItem.getLore());
-        ItemStackUtils.setItemStackDurability(stack, customItem.getStartingDurability());
-        ItemStackUtils.setItemStackEnchantments(stack, customItem.getEnchantments());
+        ItemStackUtils.setItemStackDurability(stack, customItem.getDurability());
+        ItemStackUtils.setItemStackEnchantments(stack, getEnchantments(customItem.getEnchantments()));
         ItemStackUtils.setItemStackAttributes(stack, customItem.getAttributes());
 
         return stack;
+    }
+
+    private List<Enchantment> getEnchantments(Map<EnchantmentType, Integer> enchantments) {
+        List<Enchantment> result = new ArrayList<>();
+        enchantments.forEach((k,v) -> result.add(Enchantment.of(k, v)));
+        return result;
     }
 
 }

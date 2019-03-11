@@ -10,8 +10,8 @@ import java.io.IOException;
 @Plugin(
         id = "atherysitems",
         name = "A'therys Items",
-        description = "",
-        version = "",
+        description = "An Item plugin for A'therys Horizons",
+        version = "1.0.0a",
         dependencies = {
                 @Dependency(id = "atherysrpg")
         }
