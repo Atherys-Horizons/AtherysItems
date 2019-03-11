@@ -1,7 +1,7 @@
 package com.atherys.items.generator;
 
-public interface Generator<T> {
+import java.util.function.Supplier;
 
-    T get();
-
+@FunctionalInterface
+public interface Generator<T> extends Supplier<T> {
 }
