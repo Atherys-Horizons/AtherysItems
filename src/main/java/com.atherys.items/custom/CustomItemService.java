@@ -1,5 +1,6 @@
 package com.atherys.items.custom;
 
+import com.atherys.items.generator.Generators;
 import com.atherys.items.util.ItemStackUtils;
 import com.google.inject.Singleton;
 import org.spongepowered.api.item.enchantment.Enchantment;

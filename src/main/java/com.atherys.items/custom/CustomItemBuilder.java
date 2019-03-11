@@ -63,6 +63,11 @@ public class CustomItemBuilder {
         return this;
     }
 
+    public CustomItemBuilder enchantments(Map<EnchantmentType, Integer> enchantments) {
+        this.enchantments = enchantments;
+        return this;
+    }
+
     public CustomItemBuilder enchantment(Enchantment enchantment) {
         this.enchantments.put(enchantment.getType(), enchantment.getLevel());
         return this;
