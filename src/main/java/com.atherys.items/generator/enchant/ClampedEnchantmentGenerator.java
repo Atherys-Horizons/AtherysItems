@@ -23,7 +23,7 @@ public class ClampedEnchantmentGenerator extends AbstractGenerator<Map<Enchantme
 
     public EnchantmentType getRandomType() {
         Collection<EnchantmentType> attributeTypes = Sponge.getRegistry().getAllOf(EnchantmentType.class);
-        return attributeTypes.stream()
+        return attributeTypes.parallelStream()
                 .skip((long) (attributeTypes.size() * getRandom().nextDouble()))
                 .findFirst()
                 .orElse(null);

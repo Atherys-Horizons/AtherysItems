@@ -24,7 +24,7 @@ public class ClampedAttributeGenerator extends AbstractGenerator<Map<AttributeTy
 
     public AttributeType getRandomType() {
         Collection<AttributeType> attributeTypes = Sponge.getRegistry().getAllOf(AttributeType.class);
-        return attributeTypes.stream()
+        return attributeTypes.parallelStream()
                 .skip((long) (attributeTypes.size() * getRandom().nextDouble()))
                 .findFirst()
                 .orElse(null);

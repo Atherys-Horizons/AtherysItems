@@ -19,21 +19,21 @@ public class PooledNameGenerator extends AbstractGenerator<String> {
     }
 
     public String getRandomPrefix() {
-        return prefixes.stream()
+        return prefixes.parallelStream()
                 .skip((long) (prefixes.size() * getRandom().nextDouble()))
                 .findFirst()
                 .orElse(null);
     }
 
     public String getRandomName() {
-        return names.stream()
+        return names.parallelStream()
                 .skip((long) (names.size() * getRandom().nextDouble()))
                 .findFirst()
                 .orElse(null);
     }
 
     public String getRandomPostfix() {
-        return postfixes.stream()
+        return postfixes.parallelStream()
                 .skip((long) (postfixes.size() * getRandom().nextDouble()))
                 .findFirst()
                 .orElse(null);

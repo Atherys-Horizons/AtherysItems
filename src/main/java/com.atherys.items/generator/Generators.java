@@ -3,7 +3,9 @@ package com.atherys.items.generator;
 import com.atherys.items.custom.CustomItem;
 import com.atherys.items.custom.CustomItemBuilder;
 import com.atherys.items.generator.attribute.ClampedAttributeGenerator;
+import com.atherys.items.generator.attribute.PredictableAttributeGenerator;
 import com.atherys.items.generator.enchant.ClampedEnchantmentGenerator;
+import com.atherys.items.generator.enchant.PredictableEnchantmentGenerator;
 import com.atherys.items.generator.name.ItemTypeNameGenerator;
 import com.atherys.rpg.api.stat.AttributeType;
 import org.spongepowered.api.item.ItemType;
@@ -30,24 +32,16 @@ public final class Generators {
         return new ClampedEnchantmentGenerator(number, minimumLevel, maximumLevel);
     }
 
-//    public static Generator<List<Enchantment>> configuredClampedEnchantmentGenerator() {
-//        return new ClampedEnchantmentGenerator(
-//                AtherysItems.getInstance().getConfig().DEFAULT_ENCHANT_AMOUNT,
-//                AtherysItems.getInstance().getConfig().DEFAULT_ENCHANT_MIN_LEVEL,
-//                AtherysItems.getInstance().getConfig().DEFAULT_ENCHANT_MAX_LEVEL
-//        );
-//    }
+    public static Generator<Map<EnchantmentType, Integer>> predictableEnchantmentGenerator(String seed, String separator) {
+        return new PredictableEnchantmentGenerator(seed, separator);
+    }
 
     public static Generator<Map<AttributeType, Double>> clampedAttributeGenerator(int number, double minimumValue, double maximumValue) {
         return new ClampedAttributeGenerator(number, minimumValue, maximumValue);
     }
 
-//    public static Generator<Map<AttributeType, Double>> configuredClampedAttributeGenerator() {
-//        return new ClampedEnchantmentGenerator(
-//                AtherysItems.getInstance().getConfig().DEFAULT_ATTRIBUTE_AMOUNT,
-//                AtherysItems.getInstance().getConfig().DEFAULT_ATTRIBUTE_MIN_LEVEL,
-//                AtherysItems.getInstance().getConfig().DEFAULT_ATTRIBUTE_MAX_LEVEL
-//        );
-//    }
+    public static Generator<Map<AttributeType, Double>> predictableAttributeGenerator(String seed, String separator) {
+        return new PredictableAttributeGenerator(seed, separator);
+    }
 
 }
